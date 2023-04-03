@@ -1,0 +1,15 @@
+{
+  "name": "xxdk-npm",
+  "version": "1.0.0",
+  "description": "NPM package for WebAssembly bindings for xxDK.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@git.xx.network:elixxir/xxdk-npm.git"
+  },
+  "author": "Elixxir Team",
+  "license": "BSD-2-Clause"
+}

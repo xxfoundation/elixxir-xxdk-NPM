@@ -1,0 +1,13 @@
+# Ignore Jetbrains IDE folder
+.idea/*
+
+# Ignore vim .swp buffers for open files
+.*.swp
+.*.swo
+
+# Ignore logs
+*.log
+
+# Ignore dependencies
+/node_modules
+vendor/
