@@ -1,22 +1,21 @@
 {
-  "name": "@xxnetwork/xxdk-npm",
-  "version": "1.0.1",
-  "description": "NPM package for WebAssembly bindings for xxDK.",
-  "browser": "src/index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "homepage": "https://pkg.go.dev/gitlab.com/elixxir/xxdk-wasm/wasm",
-  "repository": {
-    "type": "git",
-    "url": "https://git.xx.network/elixxir/xxdk-npm.git"
-  },
-  "author": "Elixxir Team",
-  "license": "BSD-2-Clause",
-  "keywords": [
-    "xxdk",
-    "xxnetwork",
-    "elixxir",
-    "cmix"
-  ]
+	"name": "@xxnetwork/xxdk-npm",
+	"version": "1.0.1",
+	"description": "NPM package for WebAssembly bindings for xxDK.",
+	"keywords": [
+		"xxdk",
+		"xxnetwork",
+		"elixxir",
+		"cmix"
+	],
+	"homepage": "https://xx.network/developers-mixnet/",
+	"license": "BSD-2-Clause",
+	"author": "Elixxir Team",
+	"browser": "src/index.js",
+	"repository": {
+		"type": "git",
+		"url": "https://git.xx.network/elixxir/xxdk-npm.git"
+	},
+	"scripts": {},
+	"dependencies": {}
 }
