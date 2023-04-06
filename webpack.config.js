@@ -4,10 +4,10 @@ module.exports = {
     index: './src/index.ts',
   },
   output: {
-    path: path.resolve(__dirname, './dist'),
+    path:  `${__dirname}/dist`,
     filename: 'xxdk.js',
     library: 'XXDK',
-    libraryTarget: 'es6'
+    libraryTarget: 'umd'
   },
   module: {
     rules: [
@@ -15,4 +15,7 @@ module.exports = {
       { test: /\.wasm$/, type: "asset/inline" },
     ],
   },
+  resolve: {
+    extensions: ['.ts', '.js']
+  }
 };
