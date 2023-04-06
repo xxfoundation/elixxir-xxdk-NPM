@@ -8,14 +8,24 @@
 		"elixxir",
 		"cmix"
 	],
+	"prepublishOnly": "webpack --mode=production",
+	"main": "./dist/xxdk.js",
+	"types": "./dist/xxdk.d.ts",
 	"homepage": "https://xx.network/developers-mixnet/",
 	"license": "BSD-2-Clause",
 	"author": "Elixxir Team",
-	"browser": "src/index.js",
 	"repository": {
 		"type": "git",
 		"url": "https://git.xx.network/elixxir/xxdk-npm.git"
 	},
+	"files": [
+		"dist"
+	],
 	"scripts": {},
-	"dependencies": {}
+	"devDependencies": {
+		"eslint": "^8.37.0",
+		"eslint-config-prettier": "^8.8.0",
+		"typescript": "^5.0.3",
+		"webpack": "^5.78.0"
+	}
 }
