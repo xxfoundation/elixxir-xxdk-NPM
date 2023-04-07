@@ -19,6 +19,7 @@ module.exports = {
     ],
   },
   output: {
+    publicPath: '',
     filename: 'xxdk.js',
     path: path.resolve(__dirname, 'dist'),
   },
