@@ -1,21 +1,25 @@
+const path = require('path');
+
 module.exports = {
   target: 'web',
   entry: {
     index: './src/index.ts',
   },
-  output: {
-    path:  `${__dirname}/dist`,
-    filename: 'xxdk.js',
-    library: 'XXDK',
-    libraryTarget: 'umd'
+  resolve: {
+    extensions: ['.ts', '.js']
   },
   module: {
     rules: [
-      { test: [/\.ts$/], loader: "ts-loader" },
+      {
+        test: /\.tsx?$/,
+        use: 'ts-loader',
+        exclude: /node_modules/,
+      },
       { test: /\.wasm$/, type: "asset/inline" },
     ],
   },
-  resolve: {
-    extensions: ['.ts', '.js']
-  }
+  output: {
+    filename: 'xxdk.js',
+    path: path.resolve(__dirname, 'dist'),
+  },
 };

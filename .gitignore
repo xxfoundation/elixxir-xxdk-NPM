@@ -11,3 +11,4 @@
 # Ignore dependencies
 /node_modules
 vendor/
+dist/
