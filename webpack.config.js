@@ -22,5 +22,6 @@ module.exports = {
     publicPath: '',
     filename: 'xxdk.js',
     path: path.resolve(__dirname, 'dist'),
+    globalObject: 'this',
   },
 };
