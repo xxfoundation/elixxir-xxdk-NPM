@@ -1,6 +1,6 @@
 {
 	"name": "@xxnetwork/xxdk-npm",
-	"version": "1.0.5",
+	"version": "1.0.6",
 	"description": "NPM package for WebAssembly bindings for xxDK.",
 	"keywords": [
 		"xxdk",
@@ -8,9 +8,9 @@
 		"elixxir",
 		"cmix"
 	],
-	"prepublish": "tsc",
+	"prepublishOnly": "node_modules/.bin/webpack --mode=production",
 	"main": "./dist/xxdk.js",
-	"types": "./dist/index.d.ts",
+	"types": "./dist/xxdk.d.ts",
 	"homepage": "https://xx.network/developers-mixnet/",
 	"license": "BSD-2-Clause",
 	"author": "Elixxir Team",
