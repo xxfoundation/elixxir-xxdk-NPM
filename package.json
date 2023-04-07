@@ -1,6 +1,6 @@
 {
 	"name": "@xxnetwork/xxdk-npm",
-	"version": "1.0.8",
+	"version": "1.0.9",
 	"description": "NPM package for WebAssembly bindings for xxDK.",
 	"keywords": [
 		"xxdk",
@@ -8,7 +8,7 @@
 		"elixxir",
 		"cmix"
 	],
-	"prepublishOnly": "node_modules/.bin/webpack --mode=production",
+	"prepublishOnly": "npm run build",
 	"main": "./dist/xxdk.js",
 	"types": "./dist/xxdk.d.ts",
 	"homepage": "https://xx.network/developers-mixnet/",
@@ -21,7 +21,9 @@
 	"files": [
 		"dist"
 	],
-	"scripts": {},
+	"scripts": {
+		"build": "node_modules/.bin/webpack --mode=production"
+	},
 	"devDependencies": {
 		"@babel/core": "^7.21.4",
 		"@babel/preset-env": "^7.21.4",
