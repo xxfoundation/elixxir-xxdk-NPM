@@ -1,6 +1,6 @@
 {
 	"name": "@xxnetwork/xxdk-npm",
-	"version": "1.0.9",
+	"version": "1.0.10",
 	"description": "NPM package for WebAssembly bindings for xxDK.",
 	"keywords": [
 		"xxdk",
