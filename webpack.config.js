@@ -1,7 +1,13 @@
 const path = require('path');
+const NodePolyfillPlugin = require('node-polyfill-webpack-plugin');
 
 module.exports = {
   target: 'web',
+  plugins: [
+		new NodePolyfillPlugin({
+			includeAliases: ['crypto']
+		})
+	],
   entry: {
     index: './src/index.ts',
   },
