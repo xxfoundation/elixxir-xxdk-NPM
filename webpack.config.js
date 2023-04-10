@@ -1,33 +1,31 @@
 const path = require('path');
-const NodePolyfillPlugin = require('node-polyfill-webpack-plugin');
 
 module.exports = {
-  target: 'web',
-  plugins: [
-		new NodePolyfillPlugin({
-			includeAliases: ['crypto']
-		})
-	],
-  entry: {
-    index: './src/index.ts',
+  mode: 'production',
+  entry: './src/index.ts',
+  output: {
+    publicPath: '',
+    filename: 'xxdk.js',
+    path: path.resolve(__dirname, 'dist'),
+    library: 'xxdk-js',
+    libraryTarget: 'umd',
+    globalObject: 'this'
   },
   resolve: {
-    extensions: ['.ts', '.js']
+    extensions: ['.ts', '.js', '.wasm']
+  },
+  experiments: {
+    asyncWebAssembly: true
   },
   module: {
     rules: [
       {
         test: /\.tsx?$/,
-        use: 'ts-loader',
         exclude: /node_modules/,
+        use: {
+          loader: 'ts-loader'
+        }
       },
-      { test: /\.wasm$/, type: "asset/inline" },
-    ],
-  },
-  output: {
-    publicPath: '',
-    filename: 'xxdk.js',
-    path: path.resolve(__dirname, 'dist'),
-    globalObject: 'this',
-  },
+    ]
+  }
 };
