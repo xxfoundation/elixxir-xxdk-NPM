@@ -14,9 +14,6 @@ module.exports = {
   resolve: {
     extensions: ['.ts', '.js', '.wasm']
   },
-  experiments: {
-    asyncWebAssembly: true
-  },
   module: {
     rules: [
       {
@@ -26,6 +23,10 @@ module.exports = {
           loader: 'ts-loader'
         }
       },
+      {
+        test: /\.wasm$/,
+        loader: 'wasm-loader'
+      }
     ]
   }
 };

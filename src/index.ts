@@ -3,7 +3,9 @@ import type { XXDKUtils } from './types';
 declare global {
   interface Window extends XXDKUtils {}
 }
+
 import './wasm/wasm_exec';
+
 export const loadUtils = () => new Promise<XXDKUtils>(async (res) => {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const go = new (window as any).Go();
