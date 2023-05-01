@@ -1,0 +1,37 @@
+{
+	"name": "@xxnetwork/xxdk-npm-dev",
+	"version": "1.10.4",
+	"description": "NPM package for WebAssembly bindings for xxDK.",
+	"keywords": [
+		"xxdk",
+		"xxnetwork",
+		"elixxir",
+		"cmix"
+	],
+	"module": "dist/xxdk.mjs",
+	"type": "module",
+	"typings": "dist/xxdk.d.ts",
+	"prepare": "yarn build",
+	"main": "./dist/xxdk.js",
+	"homepage": "https://xx.network/developers-mixnet/",
+	"license": "BSD-2-Clause",
+	"author": "Elixxir Team",
+	"repository": {
+		"type": "git",
+		"url": "https://git.xx.network/elixxir/xxdk-npm.git"
+	},
+	"files": [
+		"dist"
+	],
+	"scripts": {
+		"build": "rollup -c"
+	},
+	"devDependencies": {
+		"@rollup/plugin-wasm": "6.1.2",
+		"esbuild": "0.17.16",
+		"rollup": "3.20.2",
+		"rollup-plugin-dts": "5.3.0",
+		"rollup-plugin-esbuild": "5.0.0",
+		"typescript": "^5.0.3"
+	}
+}

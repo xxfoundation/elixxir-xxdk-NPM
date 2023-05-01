@@ -1,0 +1,25 @@
+image: node:16-bullseye
+
+stages:
+  - publish
+
+release-publish:
+  stage: publish
+  only:
+    - release
+  except:
+    - tags
+  script:
+    - npm set //registry.npmjs.org/:_authToken $NPM_TOKEN
+    - npm publish
+
+dev-publish:
+  stage: publish
+  only:
+    - dev
+  except:
+    - tags
+  script:
+    - cp package-dev.json package.json
+    - npm set //registry.npmjs.org/:_authToken $NPM_TOKEN
+    - npm publish
