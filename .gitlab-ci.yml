@@ -10,7 +10,7 @@ release-publish:
   except:
     - tags
   script:
-    #- npm set //registry.npmjs.org/:_authToken $NPM_TOKEN
+    - mv $NPMRC_FILE ~/.npmrc
     - npm publish
 
 dev-publish:
@@ -20,6 +20,6 @@ dev-publish:
   except:
     - tags
   script:
+    - mv $NPMRC_FILE ~/.npmrc
     - cp package-dev.json package.json
-    #- npm set //registry.npmjs.org/:_authToken $NPM_TOKEN
     - npm publish
