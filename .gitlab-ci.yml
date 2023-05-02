@@ -27,7 +27,12 @@ dev-publish:
     - apt install -y jq gawk
     - mv $NPMRC_FILE ~/.npmrc
     - cp package-dev.json package.json
+
+    # NPM will give us an error if we don't commit everything (we later throw it all away anyway) before we change versions
+    - git config --global user.email "sydney-anne+azura@elixxir.io"
+    - git config --global user.name "Azura [Bot]"
     - git add *
     - git commit -m "NPM"
+
     - npm version $(curl https://registry.npmjs.org/@xxnetwork%2fxxdk-npm-dev | jq -r .'["dist-tags"]["latest"]' | gawk -F. '/[0-9]+\./{$NF++;print}' OFS=.)
     - npm publish
