@@ -13,7 +13,7 @@ release-publish:
     - apt update
     - apt install -y jq
     - mv $NPMRC_FILE ~/.npmrc
-    - npm version $(curl https://registry.npmjs.org/@xxnetwork%2fxxdk-npm | jq -r .'["dist-tags"]["latest"]' | awk -F. '/[0-9]+\./{$NF++;print}' OFS=.)
+    - npm version v$(curl https://registry.npmjs.org/@xxnetwork%2fxxdk-npm | jq -r .'["dist-tags"]["latest"]' | awk -F. '/[0-9]+\./{$NF++;print}' OFS=.)
     - npm publish
 
 dev-publish:
@@ -27,5 +27,5 @@ dev-publish:
     - apt install -y jq
     - mv $NPMRC_FILE ~/.npmrc
     - cp package-dev.json package.json
-    - npm version $(curl https://registry.npmjs.org/@xxnetwork%2fxxdk-npm-dev | jq -r .'["dist-tags"]["latest"]' | awk -F. '/[0-9]+\./{$NF++;print}' OFS=.)
+    - npm version v$(curl https://registry.npmjs.org/@xxnetwork%2fxxdk-npm-dev | jq -r .'["dist-tags"]["latest"]' | awk -F. '/[0-9]+\./{$NF++;print}' OFS=.)
     - npm publish
