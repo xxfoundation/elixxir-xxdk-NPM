@@ -27,5 +27,7 @@ dev-publish:
     - apt install -y jq gawk
     - mv $NPMRC_FILE ~/.npmrc
     - cp package-dev.json package.json
+    - git add *
+    - git commit -m "NPM"
     - npm version $(curl https://registry.npmjs.org/@xxnetwork%2fxxdk-npm-dev | jq -r .'["dist-tags"]["latest"]' | gawk -F. '/[0-9]+\./{$NF++;print}' OFS=.)
     - npm publish
