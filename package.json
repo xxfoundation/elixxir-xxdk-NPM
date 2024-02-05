@@ -8,11 +8,11 @@
 		"elixxir",
 		"cmix"
 	],
-	"module": "dist/xxdk.mjs",
 	"type": "module",
 	"typings": "dist/xxdk.d.ts",
 	"prepare": "yarn build",
-	"main": "./dist/xxdk.js",
+  "main": "dist/xxdk.js",
+  "module": "dist/xxdk.esm.js",
 	"homepage": "https://xx.network/developers-mixnet/",
 	"license": "BSD-2-Clause",
 	"author": "Elixxir Team",

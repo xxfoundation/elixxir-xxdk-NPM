@@ -1,22 +1,35 @@
-import type { XXDKUtils } from './types';
+import type { XXDKUtils } from './types/index';
 
 declare global {
-  interface Window extends XXDKUtils {}
+  interface Window extends XXDKUtils {
+    onWasmInitialized: () => void;
+  }
 }
 
 import './wasm_exec';
 // @ts-ignore
-import makeWasm from './xxdk.wasm';
+import makeWasm from './wasm-assets/xxdk.wasm';
 
 export const loadUtils = () => new Promise<XXDKUtils>(async (res) => {
   const go = new (window as any).Go();
+  go.argv = [
+    '--logLevel=1',
+    '--fileLogLevel=1',
+    // '--workerScriptURL=integrations/assets/logFileWorker.js',
+  ]
+
+  const isReady = new Promise<void>((resolve) => {
+    window.onWasmInitialized = resolve;
+  });
+  
   const result = await makeWasm(go.importObject);
 
   go.run(result.instance);
 
+  await isReady;
+
   const {
     Base64ToUint8Array,
-    Crash,
     ConstructIdentity,
     DecodePrivateURL,
     DecodePublicURL,
@@ -24,7 +37,6 @@ export const loadUtils = () => new Promise<XXDKUtils>(async (res) => {
     GetChannelInfo,
     GetChannelJSON,
     GetClientVersion,
-    getCrashedLogFile,
     GetDefaultCMixParams,
     GetLogger,
     GetOrInitPassword,
@@ -36,21 +48,22 @@ export const loadUtils = () => new Promise<XXDKUtils>(async (res) => {
     IsNicknameValid,
     LoadChannelsManagerWithIndexedDb,
     LoadCmix,
-    LogLevel,
-    NewChannelsDatabaseCipher,
+    LoadNotifications,
+    LoadNotificationsDummy,
+    LoadSynchronizedCmix,
     NewChannelsManagerWithIndexedDb,
     NewCmix,
     NewDMClientWithIndexedDb,
-    NewDMsDatabaseCipher,
+    NewDatabaseCipher,
     NewDummyTrafficManager,
+    NewSynchronizedCmix,
     Purge,
     ValidForever,
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  } = (window) || {};
+  } = window;
 
-  res({
+
+  return {
     Base64ToUint8Array,
-    Crash,
     ConstructIdentity,
     DecodePrivateURL,
     DecodePublicURL,
@@ -58,7 +71,6 @@ export const loadUtils = () => new Promise<XXDKUtils>(async (res) => {
     GetChannelInfo,
     GetChannelJSON,
     GetClientVersion,
-    getCrashedLogFile,
     GetDefaultCMixParams,
     GetLogger,
     GetOrInitPassword,
@@ -70,16 +82,17 @@ export const loadUtils = () => new Promise<XXDKUtils>(async (res) => {
     IsNicknameValid,
     LoadChannelsManagerWithIndexedDb,
     LoadCmix,
-    LogLevel,
-    NewChannelsDatabaseCipher,
+    LoadNotifications,
+    LoadNotificationsDummy,
+    LoadSynchronizedCmix,
     NewChannelsManagerWithIndexedDb,
     NewCmix,
     NewDMClientWithIndexedDb,
-    NewDMsDatabaseCipher,
+    NewDatabaseCipher,
     NewDummyTrafficManager,
+    NewSynchronizedCmix,
     Purge,
-    ValidForever,
-  })
-})
-
-export * from './types';
+    ValidForever
+  };
+  
+});
